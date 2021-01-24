@@ -20,8 +20,8 @@ class CreateAppointmentService{
             throw Error('This Appointment is already booked!');
           }
           const appointment = appointmentRepository.create({
-            provider,
-            date: appointmentDate
+            date: appointmentDate,
+            provider
           });
 
           await appointmentRepository.save(appointment);
