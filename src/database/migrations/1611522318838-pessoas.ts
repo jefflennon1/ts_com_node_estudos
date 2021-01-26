@@ -13,7 +13,7 @@ export class pessoas1611522318838 implements MigrationInterface {
                 isNullable: false,
               },
               {
-                name: "sobremone",
+                name: "sobrenome",
                 type: "varchar",
                 isNullable: false,
               },
