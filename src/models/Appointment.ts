@@ -7,12 +7,12 @@ class Appointment{
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({name: 'provider_id'})
   provider_id: string;
 
-  @ManyToOne(()=> User)
-  @JoinColumn({ name: 'povider_id' })
-  provider: User;
+  // @ManyToOne(()=> User)
+  // @JoinColumn({ name: 'povider_id' })
+  // provider: User;
 
   @Column('timestamp with time zone')
   date: Date;

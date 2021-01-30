@@ -10,7 +10,7 @@ interface Request{
 export default class CreateUsersService{
   public async execute({name, email, password}: Request):Promise<User>{
     const usersRepository = getRepository(User);
-    const findByEmail = usersRepository.findOne({
+    const findByEmail = await usersRepository.findOne({
       where:{email}
     })
 
@@ -23,7 +23,7 @@ export default class CreateUsersService{
       password
     })
 
-    usersRepository.save(user);
+   await usersRepository.save(user);
     return user;
   }
 }
