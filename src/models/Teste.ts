@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { ForeignKeyMetadata } from 'typeorm/metadata/ForeignKeyMetadata';
+import Pessoas from './Pessoas';
 
 @Entity('testes')
 export default class Teste{
@@ -8,4 +10,8 @@ export default class Teste{
 
     @Column()
     pessoa_nome: String;
+
+    @ManyToOne(()=>Pessoas)
+    @JoinColumn({name: 'pessoa_nome'})
+    nome: Pessoas;
 }
