@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AfterRemove } from "typeorm";
 import CreateUsersService from "../service/CreateUsersService";
 
 const usersRoutes = Router();
@@ -13,6 +14,8 @@ try{
     email,
     password
   });
+
+  delete user.password;
 return response.json(user)
 
 }catch(err){
