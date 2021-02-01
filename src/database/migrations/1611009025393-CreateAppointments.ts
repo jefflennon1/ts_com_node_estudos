@@ -15,20 +15,31 @@ export default class CreateAppointments1611009025393 implements MigrationInterfa
               default: 'uuid_generate_v4()',
             },
             {
-              name: 'provider',
-              type: 'varchar',
+              name: 'provider_id',
+              type: 'uuid',
               isNullable: false,
+              isUnique: true,
             },
             {
               name: 'date',
               type: 'timestamp with time zone',
               isNullable: false,
             },
-
+            {
+              name: 'created_at',
+              type: 'timestamp',
+              default: 'now()'
+            },
+            {
+              name: 'updated_at',
+              type: 'timestamp',
+              default: 'now()'
+            }
           ]
         })
       )
     }
+
 
     public async down(queryRunner: QueryRunner): Promise<void> {
       await queryRunner.dropTable('appointments');
