@@ -13,7 +13,7 @@ export default class User{
   email: String;
 
   @Column()
-  password: String;
+  password: string;
 
   @CreateDateColumn()
   created_at: Date;
