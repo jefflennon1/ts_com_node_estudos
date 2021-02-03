@@ -4,7 +4,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 export default class User{
 
   @PrimaryGeneratedColumn('uuid')
-  id: String;
+  id: string;
 
   @Column()
   name: String;

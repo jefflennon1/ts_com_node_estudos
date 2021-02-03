@@ -1,6 +1,7 @@
 import { compare } from "bcryptjs";
 import { getRepository } from "typeorm";
 import User from "../models/User";
+import { sign, TokenExpiredError } from 'jsonwebtoken'
 
 interface Request{
   email: string;
@@ -8,6 +9,7 @@ interface Request{
 }
 interface Response{
   user: User;
+  token: string,
 }
 
 export default class AuthenticateUserService{
@@ -27,9 +29,13 @@ export default class AuthenticateUserService{
         }
 
         //Passou daqui quer dizer que o usuário está autenticado!
-
+        const token = sign({}, 'ca06312c68ad5be39b62264fce05bec0', {
+          subject : user.id,
+          expiresIn : '1d',
+        })
         return{
           user,
+          token
         }
     }
 
