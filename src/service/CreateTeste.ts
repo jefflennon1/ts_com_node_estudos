@@ -14,8 +14,8 @@ export default class CreateTeste{
           const testeExist = await testeRepository.findOne({
             where: {pessoa_nome}
           })
-          if(testeExist){
-            throw new Error('person already exist in system');
+          if(!testeExist){
+            throw new Error('person not exist in system');
           }
           const passowrdHash = await hash(password, 8);
 
