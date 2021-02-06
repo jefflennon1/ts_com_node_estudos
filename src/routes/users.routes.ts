@@ -15,7 +15,7 @@ try{
     password
   });
 
-  delete user.password;
+  // delete user.password;
 return response.json(user)
 
 }catch(err){

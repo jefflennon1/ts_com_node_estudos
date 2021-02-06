@@ -13,12 +13,14 @@ testeRouter.get('/teste',async (request, response)=>{
 
 testeRouter.post('/teste', async (request, response)=>{
   try{
-    const { pessoa_nome } = request.body;
+    const { pessoa_nome, password } = request.body;
     const createTeste = new CreateTeste();
 
     const testeCriado = await createTeste.create({
       pessoa_nome,
+      password,
     })
+    // delete(testeCriado.password);
     return response.json(testeCriado);
 
   }catch(err){

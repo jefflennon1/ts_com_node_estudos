@@ -9,7 +9,10 @@ export default class Teste{
     id: String;
 
     @Column()
-    pessoa_nome: String;
+    pessoa_nome: string;
+
+    @Column()
+    password:string
 
     @ManyToOne(()=>Pessoas)
     @JoinColumn({name: 'pessoa_nome'})
