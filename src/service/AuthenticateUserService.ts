@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 import { getRepository } from "typeorm";
 import User from "../models/User";
-import { sign, TokenExpiredError } from 'jsonwebtoken'
+import { sign } from 'jsonwebtoken'
 
 interface Request{
   email: string;
@@ -11,7 +11,6 @@ interface Response{
   user: User;
   token: string,
 }
-
 export default class AuthenticateUserService{
     public async execute({email, password}: Request): Promise<Response>{
         const userRepository = getRepository(User);
@@ -38,5 +37,4 @@ export default class AuthenticateUserService{
           token
         }
     }
-
 }
