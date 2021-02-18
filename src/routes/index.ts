@@ -10,11 +10,11 @@ import testSession from './testSession.routes';
 
 const routes = Router();
 
+routes.use(usersRoutes);
+routes.use(sessionRoutes);
 routes.use(appointmemtRouter);
 routes.use(testeRouter);
 routes.use(pessoaRouter);
-routes.use(usersRoutes);
-routes.use(sessionRoutes)
 routes.use(testSession);
 
 routes.get('/', (req: Request, res: Response)=>{

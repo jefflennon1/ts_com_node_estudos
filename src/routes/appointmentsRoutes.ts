@@ -9,6 +9,7 @@ const appointmemtRouter = Router();
 appointmemtRouter.use(ensureAuthenticated);
 
 appointmemtRouter.get('/appointments', async (request, response)=>{
+  console.log(request.user)
   const appointmentRepository = getCustomRepository(AppointmentRepository);
   const appointments = await appointmentRepository.find();
   return response.json(appointments);
