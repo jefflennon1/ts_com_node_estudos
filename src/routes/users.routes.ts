@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AfterRemove } from "typeorm";
 import CreateUsersService from "../service/CreateUsersService";
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const usersRoutes = Router();
 
@@ -21,7 +21,11 @@ return response.json(user)
 }catch(err){
   return response.status(400).json({message : err.message})
 }
-})
+});
+
+usersRoutes.patch('/users/avatar', ensureAuthenticated, async (request, response)=>{
+  return response.json({message: 'hello'})
+});
 
 
 export default usersRoutes;
