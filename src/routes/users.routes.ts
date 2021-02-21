@@ -1,11 +1,15 @@
 import { Router } from "express";
 import CreateUsersService from "../service/CreateUsersService";
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import multer from 'multer';
+import uploadConfig from '../config/uploads';
+
+const upload = multer(uploadConfig);
 
 const usersRoutes = Router();
 
 
-usersRoutes.post('/users', async (request, response)=>{
+usersRoutes.post('/users',ensureAuthenticated, upload.single('avatar'), async (request, response)=>{
 try{
   const { name, email, password } = request.body;
   const createUser = new CreateUsersService();
