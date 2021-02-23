@@ -8,6 +8,7 @@ interface Request{
 
 class ChangeAvatarUserService{
   async execute({ user_id, avatar }:Request):Promise<void>{
+    try{
     const userRepository = await getRepository(User);
     const user = await userRepository.findOne(user_id);
       if(!user){
@@ -16,6 +17,9 @@ class ChangeAvatarUserService{
      if(user.avatar){
 
      }
+    }catch(err){
+      console.log({ message: err.message})
+    }
   }
 }
 
