@@ -10,7 +10,7 @@ interface Request{
 }
 
 class ChangeAvatarUserService{
-  async execute({ user_id, avatar }:Request):Promise<User>{
+  public async execute({ user_id, avatar }:Request):Promise<User>{
     const userRepository = await getRepository(User);
     const user = await userRepository.findOne(user_id);
       if(!user){
