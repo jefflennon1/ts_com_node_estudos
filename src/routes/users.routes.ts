@@ -30,10 +30,11 @@ return response.json(user)
 usersRoutes.patch('/users/avatar', ensureAuthenticated,  upload.single('avatar'), async (request, response)=>{
   try{
     const updateUserAvatar = new ChangeAvatarUserService()
-    const user = updateUserAvatar.execute({
+    const user = await updateUserAvatar.execute({
       avatar: request.file.filename,
       user_id: request.user.id,
-    })
+    });
+    delete user.password;
     return response.json(user)
   }catch(err){
     return response.json({Message: err.message })
