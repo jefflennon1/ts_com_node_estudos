@@ -14,7 +14,7 @@ class ChangeAvatarUserService{
     const userRepository = await getRepository(User);
     const user = await userRepository.findOne(user_id);
       if(!user){
-        throw new Error('any users validates!')
+        throw new Error('Only  authenticaded users can change avatar');
       }
      if(user.avatar){
        const userAvatarFilePath = path.join(UploadConfig.directory, user.avatar) ;
@@ -22,12 +22,9 @@ class ChangeAvatarUserService{
        if(userAvatarExists){
          await fs.promises.unlink(userAvatarFilePath);
        }
-
        user.avatar = avatar;
-
        await userRepository.save(user);
      }
-
      return user;
   }
 }
