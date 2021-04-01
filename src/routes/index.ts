@@ -10,8 +10,8 @@ import testSession from './testSession.routes';
 
 const routes = Router();
 
-routes.use(usersRoutes);
 routes.use(sessionRoutes);
+routes.use(usersRoutes);
 routes.use(appointmemtRouter);
 routes.use(testeRouter);
 routes.use(pessoaRouter);
