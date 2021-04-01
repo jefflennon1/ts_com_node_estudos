@@ -11,11 +11,11 @@ import testSession from './testSession.routes';
 const routes = Router();
 
 routes.use(sessionRoutes);
+routes.use(testSession);
 routes.use(usersRoutes);
 routes.use(appointmemtRouter);
 routes.use(testeRouter);
 routes.use(pessoaRouter);
-routes.use(testSession);
 
 routes.get('/', (req: Request, res: Response)=>{
   return res.send('Hello word')
