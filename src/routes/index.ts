@@ -8,7 +8,7 @@ import sessionRoutes from './session.routes';
 const routes = Router();
 routes.use('/session', sessionRoutes);
 routes.use('/users', usersRoutes);
-routes.use('/appointmemtRouter', appointmemtRouter);
+routes.use('/appointments', appointmemtRouter);
 routes.use('/pessoas', pessoaRouter);
 
 routes.get('/', (req: Request, res: Response)=>{
