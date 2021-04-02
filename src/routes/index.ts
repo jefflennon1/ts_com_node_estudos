@@ -9,10 +9,8 @@ import testSession from './testSession.routes';
 
 const routes = Router();
 routes.use('/session', sessionRoutes);
-routes.use(testSession);
 routes.use('/users', usersRoutes);
 routes.use('/appointmemtRouter', appointmemtRouter);
-routes.use(testeRouter);
 routes.use('/pessoas',pessoaRouter);
 
 routes.get('/', (req: Request, res: Response)=>{
