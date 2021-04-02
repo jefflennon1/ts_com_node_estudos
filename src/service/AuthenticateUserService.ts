@@ -1,7 +1,8 @@
 import { compare } from "bcryptjs";
 import { getRepository } from "typeorm";
 import User from "../models/User";
-import { sign } from 'jsonwebtoken'
+import { sign } from 'jsonwebtoken';
+import AppError from '../errors/AppError'
 
 interface Request{
   email: string;
@@ -19,12 +20,12 @@ export default class AuthenticateUserService{
           });
 
         if(!user){
-          throw new Error('Incorrect email/password combination!');
+          throw new AppError('Incorrect email/password combination!', 401);
         }
         const passwordMatched = await compare(password, user.password);
 
         if(!passwordMatched){
-          throw new Error('Incorrect email/password combination!');
+          throw new AppError('Incorrect email/password combination!', 401);
         }
 
         //Passou daqui quer dizer que o usuário está autenticado!
