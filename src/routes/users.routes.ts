@@ -10,7 +10,7 @@ const upload = multer(uploadConfig);
 const usersRoutes = Router();
 
 
-usersRoutes.post('/users', ensureAuthenticated, async (request, response)=>{
+usersRoutes.post('/', ensureAuthenticated, async (request, response)=>{
 try{
   const { name, email, password } = request.body;
   const createUser = new CreateUsersService();
@@ -27,7 +27,7 @@ return response.json(user)
 }
 });
 
-usersRoutes.patch('/users/avatar', ensureAuthenticated,  upload.single('avatar'), async (request, response)=>{
+usersRoutes.patch('/avatar', ensureAuthenticated,  upload.single('avatar'), async (request, response)=>{
   try{
     const updateUserAvatar = new ChangeAvatarUserService()
     const user = await updateUserAvatar.execute({

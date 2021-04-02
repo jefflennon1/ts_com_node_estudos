@@ -5,14 +5,14 @@ import CreatePessoaService from "../service/CreatePessoaService";
 
 const pessoaRouter = Router();
 
-pessoaRouter.get('/pessoas', async (request, response)=>{
+pessoaRouter.get('/', async (request, response)=>{
   const pessoaRepository = getCustomRepository(PessoasRepository);
   const pessoas = await pessoaRepository.find();
 
   return response.json(pessoas);
 });
 
-pessoaRouter.post('/pessoas/create', async(request, response)=>{
+pessoaRouter.post('/create', async(request, response)=>{
      try{
         const { nome, sobrenome, idade } = request.body;
       const createPessoaService = new CreatePessoaService();

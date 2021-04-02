@@ -8,14 +8,14 @@ import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 const appointmemtRouter = Router();
 appointmemtRouter.use(ensureAuthenticated);
 
-appointmemtRouter.get('/appointments', async (request, response)=>{
+appointmemtRouter.get('/', async (request, response)=>{
   console.log(request.user)
   const appointmentRepository = getCustomRepository(AppointmentRepository);
   const appointments = await appointmentRepository.find();
   return response.json(appointments);
 });
 
-appointmemtRouter.post('/appointments', async (request, response)=>{
+appointmemtRouter.post('/', async (request, response)=>{
  try{
       const { provider_id, date } = request.body;
       const parsedDate = parseISO(date);
