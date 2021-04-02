@@ -14,7 +14,7 @@ routes.post('/', async(request, response)=>{
       delete user.password;
     return response.json({user, token});
   }catch(error){
-    return response.status(400).json({ Error: error.message })
+    return response.status(error.statusCode).json({ Error: error.message })
   }
 });
 
