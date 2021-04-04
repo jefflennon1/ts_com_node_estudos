@@ -13,7 +13,6 @@ pessoaRouter.get('/', async (request, response)=>{
 });
 
 pessoaRouter.post('/create', async(request, response)=>{
-     try{
         const { nome, sobrenome, idade } = request.body;
       const createPessoaService = new CreatePessoaService();
       const pessoa = await createPessoaService.execute({
@@ -22,9 +21,7 @@ pessoaRouter.post('/create', async(request, response)=>{
           idade
         });
   return response.json(pessoa)
-    }catch(error){
-      return response.json({ Error: error.message});
-    }
+
 })
 
 

@@ -28,7 +28,7 @@ return response.json(user)
 });
 
 usersRoutes.patch('/avatar', ensureAuthenticated,  upload.single('avatar'), async (request, response)=>{
-  try{
+
     const updateUserAvatar = new ChangeAvatarUserService()
     const user = await updateUserAvatar.execute({
       avatar: request.file.filename,
@@ -36,8 +36,6 @@ usersRoutes.patch('/avatar', ensureAuthenticated,  upload.single('avatar'), asyn
     });
     delete user.password;
     return response.json(user)
-  }catch(err){
-    return response.json({Message: err.message })
-  }
+
 });
 export default usersRoutes;

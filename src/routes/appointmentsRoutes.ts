@@ -16,7 +16,7 @@ appointmemtRouter.get('/', async (request, response)=>{
 });
 
 appointmemtRouter.post('/', async (request, response)=>{
- try{
+
       const { provider_id, date } = request.body;
       const parsedDate = parseISO(date);
 
@@ -26,9 +26,7 @@ appointmemtRouter.post('/', async (request, response)=>{
         provider_id,
       });
       return response.json(appointment);
-}catch(err){
-  return response.status(404).json({ error: err.message })
-}
+
 });
 
 export default appointmemtRouter;
